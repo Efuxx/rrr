@@ -4,21 +4,22 @@ public class reg
 {
     public static void Main()
     {
-        string pattern = @"([a-z0-9_-])*[a-z0-9_-]+@[a-z0-9_-]+([a-z0-9_-]+)*\.[a-z]{2,9}$";
+        string pattern = @"^(?![_\.\-\0-9])[0-9a-zA-Z-._]{2,}(?<![_\.\-])@([a-z]{1,9})\.([a-z]{1,9})$";
         {
             var data = new string[]
             {
   "artur.x.xлроитл@yandex.ru",
-  "artur.x.x.z505@gmail.com",
+  "artur.x.x-z505-@gmail.com",
   "artur.x.x.z505@yandex=ru",
   "artur.x.x.z505###@@yandex.ru",
   "artur.x.x.z505+@yandex.ru",
-  "artur.x.x.z505@yandex.ru",
+  "Ar-Tur@yandex.ru",
   "arturartur@yandex.",
-  "artur.x@.ru",
-  "artu5@yandex.ru",
+  "art_ur.x@yandex.ru",
+  "artu5+@yandex.ru",
   "artur}}}}}}@yandex.ru",
   "artur@yandex.ru3",
+  "0@yandex.ru",
             };
 
             for (int i = 0; i < data.Length; i++)
@@ -26,7 +27,7 @@ public class reg
                 if (Regex.IsMatch(data[i], pattern, RegexOptions.IgnoreCase))
                 {
                     Console.WriteLine(data[i]);
-                   
+
                 }
             }
         }
