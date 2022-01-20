@@ -4,7 +4,7 @@ public class reg
 {
     public static void Main()
     {
-        string pattern = @"^(?![_\.\-\0-9])[0-9a-zA-Z-._]{2,}(?<![_\.\-])@([a-z]{1,9})\.([a-z]{1,9})$";
+        string pattern = @"^(?![_\.\-\0-9])[0-9a-zA-Z-._]{2,20}(?<![_\.\-])@([a-z]{1,9})\.([a-z]{1,9})$";
         {
             var data = new string[]
             {
